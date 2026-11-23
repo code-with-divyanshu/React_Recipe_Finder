@@ -6,7 +6,7 @@ import recipeReducer from "./recipeSlice";
 const presistConfig = {
   key: "root",
   storage,
-  whitelist: ["favoritesList", "searchParam", "recipeList"], // Persist favorites and active search results
+  whitelist: ["favoritesList"], // Specify the reducers you want to persist
 };
 
 const persistedReducer = persistReducer(presistConfig, recipeReducer);
@@ -17,7 +17,7 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false,
+      serializableCheck: false, // Disable serializable check for redux-persist
     }),
 });
 
